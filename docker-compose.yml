@@ -1,0 +1,11 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  transcriber:
+    build: .
+    volumes:
+      - ./input:/app/input
+      - ./output:/app/output
+    ports:
+      - "8000:8000"
