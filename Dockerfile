@@ -1,22 +1,28 @@
-# Use an official Ubuntu runtime as a parent image
-FROM ubuntu:20.04
+# Use an official Ubuntu image
+FROM ubuntu:22.04
+
+# Update and install Python and FFmpeg
+RUN apt-get update && apt-get install -y \
+    python3.11 \
+    python3-pip \
+    ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Whisper
+RUN pip3 install openai-whisper moviepy
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
-# Install pip
-RUN apt-get update && apt-get install -y python3-pip
+# Copy the requirements file and install dependencies
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
 
-# Install dependencies
-RUN apt-get update && \
-    apt-get install -y ffmpeg libavcodec-extra && \
-    rm -rf /var/lib/apt/lists/* && \
-    pip3 install --no-cache-dir faster-whisper ffmpeg-python python-multipart
+# Copy the FastAPI app files
+COPY . .
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
+# Expose the FastAPI default port
+EXPOSE 8000
 
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+# Run the FastAPI app
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

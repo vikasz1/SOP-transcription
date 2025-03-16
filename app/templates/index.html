@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Transcriber</title>
+</head>
+<body>
+    <h1>Upload Video for Transcription</h1>
+    <form action="/transcribe" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="video/*" required>
+        <br>
+        <label for="language">Language:</label>
+        <select name="language" id="language">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+        </select>
+        <br>
+        <button type="submit">Transcribe</button>
+    </form>
+    <br>
+    <form action="/translate" method="post">
+        <label for="text">Text to Translate:</label>
+        <textarea name="text" id="text" rows="4" cols="50" required></textarea>
+        <br>
+        <label for="target_language">Target Language:</label>
+        <select name="target_language" id="target_language">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+        </select>
+        <br>
+        <button type="submit">Translate</button>
+    </form>
+</body>
+</html>
