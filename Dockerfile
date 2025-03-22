@@ -8,9 +8,6 @@ RUN apt-get update && apt-get install -y \
     ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Whisper
-RUN pip3 install openai-whisper moviepy
-
 # Set the working directory
 WORKDIR /app
 

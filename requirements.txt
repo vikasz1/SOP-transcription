@@ -6,4 +6,3 @@ faster-whisper>=0.9.0
 ffmpeg-python>=0.2.0
 Jinja2>=3.1.2
 speechRecognition
-openai-whisper
