@@ -1,1 +1,0 @@
- Okay, so I hope this is clear to me. So today I am going to show you how to set up GoLama on this computer. What you need to do is you need to type GoLama run llama 3.2 where llama 3.2 is the name of the model. And this is just a test video to figure out if I am able to test type the video or not. So that is just a test video. Okay. Goodbye. Bye bye. Recording stop.
